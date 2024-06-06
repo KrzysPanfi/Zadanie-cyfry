@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -64,11 +65,11 @@ public class Main {
         int count2 = 0;
         int count8 = 0;
         for (String i : liczby) {
-            float num = Float.parseFloat(i);
-            if (num % 2 == 0) {
+            char[] chars = i.toCharArray();
+            if (chars[chars.length - 1] == '0') {
                 count2++;
             }
-            if (num % 8 == 0) {
+            if (chars[chars.length - 1] == '0' && chars[chars.length - 2] == '0' && chars[chars.length - 3] == '0') {
                 count8++;
             }
         }
@@ -79,27 +80,29 @@ public class Main {
         return wynik;
     }
 
+    // 1011101
+    //
     public static ArrayList<String> Zad3(ArrayList<String> liczby) {
         ArrayList<String> wynik = new ArrayList<>();
-        float min = Float.MAX_VALUE;
+        BigInteger min = BigInteger.valueOf(Long.MAX_VALUE);
         int minindex = 0;
-        float max = 0;
+        BigInteger max = BigInteger.ZERO;
         int maxindex = 0;
         for (int i = 0; i < liczby.size(); i++) {
             String numstr = liczby.get(i);
-            float num = Float.parseFloat(numstr);
-            if (num > max) {
-                max = num;
+            BigInteger bigint = new BigInteger(numstr, 2);
+            if (bigint.compareTo(max) > 0) {
+                max = bigint;
                 maxindex = i;
             }
-            if (num < min) {
-                min = num;
+            if (bigint.compareTo(min) < 0) {
+                min = bigint;
                 minindex = i;
             }
         }
-        wynik.add("Index największej");
+        wynik.add("Index największej:");
         wynik.add(Integer.toString(maxindex));
-        wynik.add("Index najmniejszej");
+        wynik.add("Index najmniejszej:");
         wynik.add(Integer.toString(minindex));
         return wynik;
     }
