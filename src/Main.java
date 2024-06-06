@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
-
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -80,8 +79,6 @@ public class Main {
         return wynik;
     }
 
-    // 1011101
-    //
     public static ArrayList<String> Zad3(ArrayList<String> liczby) {
         ArrayList<String> wynik = new ArrayList<>();
         BigInteger min = BigInteger.valueOf(Long.MAX_VALUE);
